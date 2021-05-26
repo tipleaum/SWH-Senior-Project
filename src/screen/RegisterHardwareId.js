@@ -17,7 +17,7 @@ async function requestTicket(token, hardwareId, setIsReady, setIsLoading) {
 
   return axios({
     method: 'post',
-    url: "http://192.168.1.69:8000/auth/hardware-ticket/",
+    url: "http://192.168.1.111:8000/auth/hardware-ticket/",
     data: body,
     headers: {
       "Authorization": `Token ${token}`
@@ -36,7 +36,7 @@ async function requestTicket(token, hardwareId, setIsReady, setIsLoading) {
 
 const RegisterHardwareId = ({ ticket, setTicket, hardwareId, setHardwareId}) => {
   const { dispatch } = useContext(NotificationContext);
-  const [value,setValue] = useState('');
+  const [value, setValue] = useState('');
   const [isReady, setIsReady] = useState(true);
   const { token, setToken } = useToken();
   const [isLoading, setIsLoading] = useState(false);

@@ -98,7 +98,7 @@ const PickUp = ({
           type: 'ADD_NOTIFICATION',
           payload: {
             type: 'INCORRECT',
-            message: 'กรุณาไปให้ถูกตำแหน่ง',
+            message: `กรุณาไปให้ถูกตำแหน่ง`,
           },
         });
       } else if (status === 'WEIGHTING') {
@@ -141,6 +141,7 @@ const PickUp = ({
       setCurrentLocation(rackLocation);
       setIsOutGate(true);
     } else if (stage === 4 && isNotify && status) {
+      setCurrentLocation('')
       if (totalPickup - donePickup === 0) {
         ActionNotification('DONE');
         setIsOutGate(false);
@@ -148,13 +149,16 @@ const PickUp = ({
         ActionNotification('COMPLETE');
         setIsOutGate(false);
       }
+    } else if (stage === 2 && error_type === 'LOCATION') {
+      setCurrentLocation(curLocation);
+      ActionNotification('WRONG_DESTINATION');
     } else if (
       stage !== 0 &&
       stage !== 1 &&
       !([rackLocation].includes(currentLocation) && floorRack === curFloorRack) && error_type === 'LOCATION'
     ) {
       ActionNotification('WRONG_DESTINATION');
-    }
+    } 
   }, [mode, stage, isNotify, status, msg, ActionNotification]);
 
   return (

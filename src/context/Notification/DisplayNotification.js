@@ -8,7 +8,6 @@ Updated - 09/02/2021 - Aum
 import React, { useState, useContext, useEffect } from 'react';
 import { NotificationContext } from './ProviderNotification';
 import '../../css/Notification.css';
-import { emitCustomEvent, useCustomEventListener } from 'react-custom-events';
 
 const DisplayNotification = ({ mode, stage }) => {
   // notificationState will call from ProviderNotification.js and use to update share state for whole project.
@@ -35,10 +34,12 @@ const DisplayNotification = ({ mode, stage }) => {
         setExit(false);
       } else if (type === 'POPUP') {
         setExit(false);
+      } else {
+        setExit(true);
       }
     } else {
       if (typeof(type, message) !== 'undefined') {
-        setExit(true);
+        setExit(false);
       }
     }
     return () => clearTimeout(timer);
@@ -58,14 +59,3 @@ const DisplayNotification = ({ mode, stage }) => {
 };
 
 export default DisplayNotification;
-
-// var a = 0;
-// var b = 0;
-
-// emitCustomEvent('changemode', a,b);
-
-// useCustomEventListener('changemode', a => {
-//   setMode(a);
-// }, b => {
-//   setStage(b);
-// })

@@ -9,7 +9,7 @@ import useToken from '../component/Hooks/useToken';
 async function fetchPhoto(token) {
   return axios({
     method: "post",
-    url: "http://192.168.1.69:8000/auth/get_user_image/",
+    url: "http://192.168.1.111:8000/auth/get_user_image/",
     headers: {
       "Authorization": `Token ${token}`
     }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../css/Login.css';
-import QrcodeLogIn from '../component/QrcodeLogIn';
+// import QrcodeLogIn from '../component/QrcodeLogIn';
 import axios from 'axios';
 import { emitCustomEvent, useCustomEventListener } from 'react-custom-events';
 import PropTypes from 'prop-types';
@@ -11,7 +11,7 @@ import Loading from './Loading';
 async function loginUser(credentials, setCloseModal, setUserName, setPassword, setErrMsg) {
   return axios({
     method: "post",
-    url: "http://192.168.1.69:8000/auth/token/",
+    url: "http://192.168.1.111:8000/auth/token/",
     data: credentials,
   }).then(data => data.data).catch(error => {
     console.log(error);
@@ -29,7 +29,7 @@ async function requestTicket(token, hardwareId) {
 
   return axios({
     method: 'post',
-    url: "http://192.168.1.69:8000/auth/hardware-ticket/",
+    url: "http://192.168.1.111:8000/auth/hardware-ticket/",
     data: body,
     headers: {
       "Authorization": `Token ${token}`

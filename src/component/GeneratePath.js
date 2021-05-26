@@ -22,7 +22,7 @@ const GeneratePath = ({ destination, currentLocation, isOutGate, isCheckingZone 
   const checkingPoint = '565';
   const outGate = '650';
 
-  // if don't have current location, it will be generating from lift.
+  // if don't have current location, it will be generating from in gate.
   const startingFromInGate = 'M435,650 V550';
 
   // ----------------- end of starting variable --------------------------

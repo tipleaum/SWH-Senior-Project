@@ -54,13 +54,12 @@ const SuperviserLocation = ({ token, setToken, setCloseLoading, setIsSuperuser }
   }
   
   const handleSend = () => {
-   
     setSource('');
     setDestination('');
 
     if (source && destination) {
       axios.get(
-        'http://192.168.1.69:8000/managements/location_transfer/', //http://192.168.137.16:8000/test-api/ //https://44cdb04c-ce85-4389-8564-72f16f3f2eba.mock.pstmn.io/testing-swh-http/
+        'http://192.168.1.111:8000/managements/location_transfer/', //http://192.168.137.16:8000/test-api/ //https://44cdb04c-ce85-4389-8564-72f16f3f2eba.mock.pstmn.io/testing-swh-http/
         {
           params: {
             source: source,

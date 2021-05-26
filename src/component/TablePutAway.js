@@ -9,7 +9,7 @@ They display on top of display.
 Updated - 15/04/2021 - Aum
 */
 
-import React, { useState } from 'react';
+import React from 'react';
 import '../css/TablePutAway.css';
 
 const TablePutAway = ({

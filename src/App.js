@@ -67,7 +67,7 @@ let interval = null;
 async function requestTicket(token, hardwareId) {
   return axios({
     method: 'post',
-    url: "http://192.168.1.69:8000/auth/hardware-ticket/",
+    url: "http://192.168.1.111:8000/auth/hardware-ticket/",
     data: {
       "hardware_id": hardwareId
     },
@@ -156,7 +156,7 @@ function App() {
   useEffect(() => {
     if (ticket) {
       console.log('กำลังสร้างการเชื่อมต่อ');
-      const url = `ws://192.168.1.69:8000/ws/mode/sw${hardwareId}/${ticket}/`; // ws://<ip>:<port>/ws/mode/<hardware_id>/  ws://10.25.247.97:8000/ws/mode/sw0001/ --> link ตอนเชื่อมกับ server จริง
+      const url = `ws://192.168.1.111:8000/ws/mode/sw${hardwareId}/${ticket}/`; // ws://<ip>:<port>/ws/mode/<hardware_id>/  ws://10.25.247.97:8000/ws/mode/sw0001/ --> link ตอนเชื่อมกับ server จริง
       ws.current = new W3CWebSocket(url);
   
       ws.current.onopen = () => {

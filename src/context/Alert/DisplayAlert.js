@@ -8,15 +8,15 @@ Updated - 09/02/2021 - Aum
 import React, { useState, useContext, useEffect } from 'react';
 import { AlertContext } from './ProviderAlert';
 import '../../css/Alert.css';
-import { emitCustomEvent, useCustomEventListener } from 'react-custom-events';
+import { emitCustomEvent } from 'react-custom-events';
 
 const DisplayAlert = ({ mode, stage }) => {
   // notificationState will call from ProviderNotification.js and use to update share state for whole project.
   // dispatch will call from ProviderNotification.js and use to update new dispatch order to whole project.
   // 'useContext' share variable to whole project.
   const { alertState, dispatch } = useContext(AlertContext);
-  const { type, message, exitPopup } = alertState;
-  const [exit, setExit] = useState(false);
+  const { type, message } = alertState;
+  const [exit, setExit] = useState(true);
 
   // handle for time out 'correct' notification.
   const handleCloseNoti = () => {
@@ -49,6 +49,8 @@ const DisplayAlert = ({ mode, stage }) => {
         setExit(false);
       } else if (type === 'NOTIFY') {
         setExit(false);
+      } else {
+        setExit(true);
       }
     } else {
       if (typeof(type, message) !== 'undefined') {
